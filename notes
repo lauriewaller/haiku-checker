@@ -1,0 +1,33 @@
+array of arrays
+objectOfArray {
+1: syllable ["two", "spring"]
+2: syllable []
+3: syllable []
+4: syllable []
+5: syllable []
+}
+
+5 syllables, randomly select word 5 or less syllables, and if it is not equal 5, add a word less than the current word syllable count.
+
+
+
+function test(random, min, max) {
+   return random * (max - min) + min;
+}
+
+test( Math.random(), 2, 5)
+
+1. random number generator to grab first key from object 
+If first key = 5, call base case. 
+else return function again.
+
+function randomWordLineOneAndThree(objectOfArray, let counter = 0) {
+ const randomNumber = Math.floor(Math.random() * (1 - 5))
+ counter + randomNumber;
+ return randomWordLineOneAndThree(objectOfArray) + objectOfArray[randomNumber];
+}
+
+pickAWord
+
+let arrayPrime = [ [a, I, we, you], [to, be, or, not] ]
+

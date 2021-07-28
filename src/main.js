@@ -3,16 +3,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 
-$("#submit").click(function(event){
-  event.preventDefault();
-  const line1 = $("#line1").val();
-  const line2 = $("#line2").val();
-  const line3 = $("#line3").val();
-  console.log(line1, line2, line3);
-});
-
 const checkLinesOneAndThree = (string, counter = 0) => {
-  //let counter = 0;
   const convertedString = string.toLowerCase();
   if (convertedString === "") {
     if (counter === 5) {
@@ -20,7 +11,6 @@ const checkLinesOneAndThree = (string, counter = 0) => {
     } else {
       return false;
     }
-    //return counter;
   } else {
     if (convertedString[0] === "a" || convertedString[0] === "e" || convertedString[0] === "i" || convertedString[0] === "o" || convertedString[0] === "u") {
       counter++;
@@ -31,37 +21,7 @@ const checkLinesOneAndThree = (string, counter = 0) => {
   }
 };
 
-const Array = [];
-const vowelArray = Array.map(function(element) {
-  return element * 2;
-});
-vowelArray;
-
-
-
-// let counter = 0;
-
-// const checkLinesOneAndThree = (string) => {
-//   const convertedString = string.toLowerCase();
-//   if (convertedString === "") {
-//     if (counter === 5) {
-//       return true;
-//     } else {
-//       return false;
-//     }
-//     return counter;
-//   } else {
-//     if (convertedString[0] === "a" || convertedString[0] === "e" || convertedString[0] === "i" || convertedString[0] === "o" || convertedString[0] === "u") {
-//       counter++;
-//     }
-//     console.log(counter);
-//     console.log("final string = " + convertedString);
-//     return checkLinesOneAndThree(convertedString.substring(1));
-//   }
-// };
-
 const checkLineTwo = (string, counter = 0) => {
-  //let counter = 0;
   const convertedString = string.toLowerCase();
   if (convertedString === "") {
     if (counter === 7) {
@@ -79,6 +39,19 @@ const checkLineTwo = (string, counter = 0) => {
   }
 };
 
+$("#submit").click(function(event){
+  event.preventDefault();
+  const line1 = $("#line1").val();
+  const line2 = $("#line2").val();
+  const line3 = $("#line3").val();
+
+  console.log(line1);
+  if ((checkLinesOneAndThree(line1) === true) && (checkLineTwo(line2) === true) && (checkLinesOneAndThree(line3) === true)) {
+    return $(".showResult").text("This is a haiku!");
+    } else {
+      return $(".showResult").text("This is NOT a haiku!");
+    }
+});
 
 
 
@@ -86,5 +59,3 @@ const checkLineTwo = (string, counter = 0) => {
 
 
 
-// const countVowels = str => Array.from(str)
-//   .filter(letter => 'aeiou'.includes(letter)).length;
